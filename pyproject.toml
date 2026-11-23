@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vw-ssh"
+version = "0.1.0"
+description = "SSH keys from a Vaultwarden vault, with explicit locking and offline recovery"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = ["cryptography>=43,<47"]
+classifiers = [
+  "Operating System :: POSIX :: Linux",
+  "Operating System :: MacOS :: MacOS X",
+  "Programming Language :: Python :: 3",
+]
+
+[project.urls]
+Repository = "https://github.com/drsdgdbye/vw_ssh"
+Issues = "https://github.com/drsdgdbye/vw_ssh/issues"
+Releases = "https://github.com/drsdgdbye/vw_ssh/releases"
+
+[project.scripts]
+vw-ssh = "vw_ssh.cli:entrypoint"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+vw_ssh = ["templates/*.json"]

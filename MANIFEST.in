@@ -1,0 +1,5 @@
+include LICENSE README.md CHANGELOG.md VERIFICATION.md RELEASE.md
+recursive-include src/vw_ssh/templates *.json
+recursive-include tests *.py
+include .github/workflows/tests.yml
+include scripts/release.py

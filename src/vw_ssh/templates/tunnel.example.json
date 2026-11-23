@@ -1,0 +1,11 @@
+{
+  "example-tunnel": {
+    "host": "gateway.example.com",
+    "user": "deploy",
+    "port": 2222,
+    "keyName": "example-key",
+    "itemId": "REPLACE_WITH_SSH_ITEM_ID",
+    "fingerprint": "REPLACE_WITH_SHA256_FINGERPRINT",
+    "forwards": [{"local": 18080, "remote": "127.0.0.1:8080"}]
+  }
+}

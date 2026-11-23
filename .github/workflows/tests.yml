@@ -1,0 +1,27 @@
+name: tests
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ['3.11', '3.13']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install . build pipx
+      - run: python -m unittest discover -s tests -v
+      - run: python scripts/release.py
+      - name: Isolated pipx installation
+        shell: bash
+        run: |
+          export PIPX_HOME="$RUNNER_TEMP/vws-pipx"
+          export PIPX_BIN_DIR="$RUNNER_TEMP/vws-bin"
+          python -m pipx install dist/*.whl
+          "$PIPX_BIN_DIR/vw-ssh" --home "$RUNNER_TEMP/vws-home" init --server https://vault.example.com --email user@example.com
+          "$PIPX_BIN_DIR/vw-ssh" help
