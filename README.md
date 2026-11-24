@@ -1,11 +1,23 @@
+```text
+                                    #
+ m   m m     m         mmm    mmm   # mm
+ "m m" "m m m"        #   "  #   "  #"  #
+  #m#   #m#m#          """m   """m  #   #
+   #     # #          "mmm"  "mmm"  #   #
+              """""""
+```
+
 # vw-ssh
 
-SSH keys from a Vaultwarden vault, loaded into local OpenSSH agents. Linux and
-macOS. MIT licensed. Python 3.11+. No Windows support.
+**vw-ssh is a command-line tool for managing SSH access with keys stored in
+Vaultwarden.** It connects your vault to OpenSSH so you can use familiar `ssh`,
+`scp` and `rsync` commands without keeping plaintext private-key files on disk.
 
-The SSH utility works on its own. An AI agent, MCP server and OpenCode are **not
-required**. Optional MCP uses a separate account profile and explicit collection
-allowlist. No server, email, organization, host or connection is preconfigured.
+Use it to keep server connection profiles in one place, load keys into memory
+when needed, and clear them with an explicit lock. Encrypted recovery archives
+let you restore SSH access even when your vault is unavailable.
+
+Runs on Linux and macOS with Python 3.11+.
 
 ## How it works
 
@@ -388,3 +400,7 @@ python3 -m venv .venv
 Tests use generated keys, temporary application homes and only their own agents.
 They must not access a real vault or modify a user's SSH config. CI runs on Linux
 and macOS. See `VERIFICATION.md` for actual release checks and limitations.
+
+## License
+
+[MIT](LICENSE).
